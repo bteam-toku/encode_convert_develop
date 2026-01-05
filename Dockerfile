@@ -19,3 +19,8 @@ RUN mkdir /work
 
 # コンテナ起動時のデフォルトコマンド
 ENTRYPOINT ["python", "-m"]
+
+# メタデータの追加
+LABEL org.opencontainers.image.source="https://github.com/bteam-toku/encode_convert_develop.git"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.description="エンコード一括変換／復元（Dockerコンテナ）"

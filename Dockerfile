@@ -6,19 +6,22 @@ WORKDIR /app
 
 # requirements.txtをコンテナにコピー
 COPY requirements.txt .
-
 # 依存関係をインストール
 RUN pip install --no-cache-dir -r requirements.txt
 
 # スクリプトをコンテナにコピー
 COPY ./encode_convert ./encode_convert
-COPY ./restore_orgfile ./restore_orgfile
+COPY ./settings.yaml .
+COPY ./pyproject.toml .
 
-# 作業ディレクトリの/workフォルダを作成
-RUN mkdir /work
+# IS_DOCKER環境変数を設定
+ENV IS_DOCKER=true
+# 標準出力がバッファリングされないよう設定（C#側でリアルタイムに進捗を拾うため）
+ENV PYTHONUNBUFFERED=1
 
 # コンテナ起動時のデフォルトコマンド
-ENTRYPOINT ["python", "-m"]
+ENTRYPOINT ["python", "-m", "encode_convert"]
+CMD []
 
 # メタデータの追加
 LABEL org.opencontainers.image.source="https://github.com/bteam-toku/encode_convert_develop.git"

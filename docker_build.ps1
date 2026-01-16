@@ -1,2 +1,0 @@
-docker build --no-cache -t ghcr.io/bteam-toku/encode_convert:latest .
-docker tag ghcr.io/bteam-toku/encode_convert:latest encode_convert

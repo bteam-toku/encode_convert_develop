@@ -1,0 +1,6 @@
+# --- 拡張子 ---
+convert_extension: ['.c', '.cpp', '.h', '.hpp']
+backup_extension: .org
+
+# --- 出力パス ---
+output_path: ./output

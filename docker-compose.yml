@@ -1,0 +1,9 @@
+services:
+  encode_convert:
+    build: .
+    image: ghcr.io/bteam-toku/encode_convert:latest
+    container_name: encode_convert_container
+    environment:
+      - IS_DOCKER=true
+    volumes:
+      - .:/data

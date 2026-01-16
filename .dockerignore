@@ -3,7 +3,8 @@
 # 除外ファイル
 
 # 除外フォルダ
-.test
+scripts/
+tests/
 
 # 一般的な除外パターン
 .venv

@@ -1,6 +1,5 @@
 from encode_convert.config import Config
 from encode_convert.factories import Factory
-from encode_convert.interfaces import AbstractConverter
 import argparse
 import pandas as pd
 import os
@@ -27,7 +26,7 @@ def main():
 
     # エンコード変換実行
     config=Config()
-    converter : AbstractConverter = Factory.create(config=config)
+    converter = Factory.create(config=config)
     output_path = args.output_path if args.output_path else config.output_path()
 
     match mode:

@@ -1,10 +1,10 @@
-from abc import abstractmethod
+from encode_convert.interfaces import AbstractEncodeConvert
 import chardet
 import codecs
 import os
 import shutil
 
-class BaseEncodeConvert:
+class BaseEncodeConvert(AbstractEncodeConvert):
     """エンコード変換基底クラス
     """
     # protected attributes
@@ -29,7 +29,6 @@ class BaseEncodeConvert:
     #
     # public methods
     #
-    @abstractmethod
     def convert(self, file_path: str, to_encoding: str) -> bool:
         """エンコード変換処理
 
@@ -62,7 +61,6 @@ class BaseEncodeConvert:
         # 変換結果を返却
         return result
     
-    @abstractmethod
     def convert_in_folder(self, folder_path: str, to_encoding: str) -> list:
         """エンコード変換一括処理
 
@@ -94,7 +92,6 @@ class BaseEncodeConvert:
         # 返却値として変換結果リストを返す
         return self._converted_file_list
     
-    @abstractmethod
     def get_converted_result(self) -> list:
         """変換結果取得
 
@@ -106,7 +103,6 @@ class BaseEncodeConvert:
     #
     # protected methods
     #
-    @abstractmethod
     def _convert_encoding(self, file_path: str, from_encoding: str, to_encoding: str) -> bool:
         """エンコード変換処理
 
@@ -128,7 +124,6 @@ class BaseEncodeConvert:
             print(f"Error during encoding conversion: {file_path} ({from_encoding} -> {to_encoding} - {e})")
             return False
 
-    @abstractmethod
     def _get_encoding_name(self, file_path: str) -> str:
         """エンコード名取得
 
@@ -152,7 +147,6 @@ class BaseEncodeConvert:
         return encoding_name
 
 
-    @abstractmethod
     def _is_valid_encoding(self, encoding_name: str) -> bool:
         """有効なエンコード名か判定
 

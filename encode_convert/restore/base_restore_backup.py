@@ -1,7 +1,7 @@
-from abc import abstractmethod
+from encode_convert.interfaces import AbstractRestoreBackup
 import os
 
-class BaseRestoreBackup:
+class BaseRestoreBackup(AbstractRestoreBackup):
     """バックアップ復元基底クラス
     """
     # protected attributes
@@ -27,7 +27,6 @@ class BaseRestoreBackup:
     #
     # public methods
     #
-    @abstractmethod
     def restore(self, file_path: str) -> bool:
         """バックアップからの復元処理
 
@@ -55,7 +54,6 @@ class BaseRestoreBackup:
             print(f"バックアップ復元中にエラーが発生しました: {file_path} - {e}")
             return False
 
-    @abstractmethod
     def restore_in_folder(self, folder_path: str) -> list:
         """一括バックアップ復元処理
 
@@ -85,7 +83,6 @@ class BaseRestoreBackup:
         # 返却値として復元結果リストを返す
         return self._restored_file_list
     
-    @abstractmethod
     def get_restored_result(self) -> list:
         """復元ファイルリスト取得
 

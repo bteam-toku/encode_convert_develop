@@ -1,18 +1,18 @@
 from encode_convert.interfaces import AbstractConverter
-from encode_convert.convert import DefaultEncodeConvert
-from encode_convert.restore import DefaultRestoreBackup
+from encode_convert.interfaces import AbstractEncodeConvert
+from encode_convert.interfaces import AbstractRestoreBackup
 
 class DefaultConverterAdaptor(AbstractConverter):
     """エンコード変換アダプタークラス
     """
     # protected attributes
-    _converter: DefaultEncodeConvert
-    _restorer: DefaultRestoreBackup
+    _converter: AbstractEncodeConvert
+    _restorer: AbstractRestoreBackup
 
     #
     # constructor/destructor
     #
-    def __init__(self, converter: DefaultEncodeConvert, restorer: DefaultRestoreBackup) -> None:
+    def __init__(self, converter: AbstractEncodeConvert, restorer: AbstractRestoreBackup) -> None:
         """コンストラクタ
         """
         super().__init__()

@@ -5,9 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "encode_convert"
 version = "0.1.0"
-
-# 依存ライブラリ
+requires-python = ">=3.14"
 dependencies = ["pandas", "chardet", "PyYAML"]
 
+[project.scripts]
+convert = "encode_convert.__main__:main"
+restore = "encode_convert.__main__:main"
+encode_convert = "encode_convert.__main__:main"
+
 [tool.setuptools]
-packages = { find = {} }
+package-dir = { "" = "src" }
+packages = { find = { where = ["src"] } }

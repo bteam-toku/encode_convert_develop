@@ -9,7 +9,7 @@ if ($args[0] -eq "convert") {
         Write-Host "Usage: .\encode_convert_dev.ps1 convert <path> <encode>"
         exit
     }
-    py -m encode_convert $args[0] $args[1] $args[2]
+    uv run convert $args[0] $args[1] $args[2]
 }
 # restore_original実行
 elseif ($args[0] -eq "restore") {
@@ -17,7 +17,7 @@ elseif ($args[0] -eq "restore") {
         Write-Host "Usage: .\encode_convert_dev.ps1 restore <path>"
         exit
     }
-    py -m encode_convert $args[0] $args[1]
+    uv run restore $args[0] $args[1]
 }
 # その他
 else {
